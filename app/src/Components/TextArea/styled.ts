@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const TextAreaStyled = styled.textarea`
-    resize: none;
+    resize: none;    
     width: 100%;
+    margin-top: 2rem;
     background-color: transparent;
     height: 100vh;
     color: white;
