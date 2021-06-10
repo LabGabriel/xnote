@@ -1,0 +1,13 @@
+import styled from "styled-components";
+
+export const TextAreaStyled = styled.textarea`
+    resize: none;
+    width: 100%;
+    background-color: transparent;
+    height: 100vh;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    border: 0;
+    font-family: 'Lexend', sans-serif;
+`
