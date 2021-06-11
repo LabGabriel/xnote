@@ -2,14 +2,18 @@ import React from 'react';
 import { InputArea, ButtonInput } from './styled';
 
 interface InputTabNameTypes {
-    onClick: () => void;
+    onClick: (object: object) => void;
+    onChange: (object: object) => void;
 }
 
-const InputTabName:React.FC<InputTabNameTypes> = ({onClick}) => {
+const InputTabName:React.FC<InputTabNameTypes> = ({onClick, onChange}) => {
     return (
         <InputArea>            
             <input type="text" name="nameTab" 
-                placeholder="New name tab"
+                placeholder="Note name"
+                autoComplete="off"
+                autoFocus={true}
+                onChange={onChange}
             />
             <ButtonInput onClick={onClick}>Close</ButtonInput>
         </InputArea>
