@@ -1,10 +1,15 @@
 import React from 'react';
 import {TextAreaStyled} from './styled';
 
-const TextArea:React.FC = () => {
+interface TextAreaTypes {
+    defaultValue: string
+}
+
+const TextArea:React.FC<TextAreaTypes> = ({defaultValue}) => {
     return(
         <TextAreaStyled 
             autoFocus={true}
+            defaultValue={defaultValue}
         />
     )
 }
