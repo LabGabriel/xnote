@@ -2,8 +2,10 @@ import { Tab, TabList } from "react-tabs";
 import styled from "styled-components";
 
 export const TabListStyled = styled(TabList)`
-    display: flex;
-    list-style: none;    
+    .tab-area {
+        display: flex;
+        list-style: none;    
+    }    
 `
 
 export const TabStyled = styled(Tab)`
@@ -15,6 +17,7 @@ export const TabStyled = styled(Tab)`
     cursor: pointer;
     border: 0.1rem solid transparent !important;
     animation: all 0.3s;
+    color: #cfcfcf !important;
 
     &.react-tabs__tab--selected {
         border: 0.1rem solid #CD00FE !important;

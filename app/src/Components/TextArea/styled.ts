@@ -11,4 +11,5 @@ export const TextAreaStyled = styled.textarea`
     outline: none;
     border: 0;
     font-family: 'Lexend', sans-serif;
+    color: #cfcfcf;
 `
