@@ -11,36 +11,41 @@ import InputTabName from 'Components/InputTabName';
 import { TabListStyled, TabStyled, ButtonPlus } from './styled';
 
 const Index: React.FC = () => {
+    const [isInputActive, setIsInputActive] = useState(false);
+
+    const toggleInput = () => {
+        setIsInputActive(!isInputActive);
+    }
+    
+    const newTab = () => {
+    }
+
     return (
         <PageStrecture>
             <Tabs>
                 <TabListStyled>
                     <div className="tab-area">
-                        <TabStyled>
+                        <TabStyled onDoubleClick={toggleInput} title="Double click edit name tab">
                             Tab
                         </TabStyled>
-                        <TabStyled>
-                            Tab
-                        </TabStyled>
-                        <TabStyled>
-                            Tab
-                        </TabStyled>
-                        <ButtonPlus>+</ButtonPlus>
+                        <ButtonPlus onClick={newTab}>+</ButtonPlus>
                     </div>
 
-                    <InputTabName />
+                    {
+                        isInputActive && (
+                            <InputTabName
+                                onClick={toggleInput}
+                            />
+                        )
+                    }
 
                 </TabListStyled>
 
                 <TabPanel>
                     <TextArea
                         defaultValue={""}
-                    />                    
+                    />
                 </TabPanel>
-                <TabPanel>
-                    2
-                </TabPanel>
-
             </Tabs>
         </PageStrecture>
     )
