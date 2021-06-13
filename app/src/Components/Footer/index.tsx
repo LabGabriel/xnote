@@ -1,12 +1,26 @@
 import React from 'react';
 
-import { FooterStyled } from './styled';
+import { FooterStyled, NavFooter } from './styled';
 
-const Footer: React.FC = () => {
+interface FooterTypes {
+    onClick: () => void;
+    amountNote: number;
+}
+
+const Footer: React.FC<FooterTypes> = ({onClick, amountNote}) => {
     return (
         <FooterStyled>
             <div>
-                <p>Shortcuts</p>
+                <NavFooter>
+                    <li>
+                        <button onClick={onClick} disabled={amountNote > 1 ? false : true}>Detele all</button>
+                    </li>
+                </NavFooter>
+            </div>
+            <div>
+                <NavFooter>
+                    <li>About</li>
+                </NavFooter>
             </div>
         </FooterStyled>
     )
