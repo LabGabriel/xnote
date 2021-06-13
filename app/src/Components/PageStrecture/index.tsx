@@ -1,10 +1,7 @@
 import React from 'react';
+
 //Styled
 import { Container } from './styled';
-
-//Components
-import Footer from 'Components/Footer';
-
 
 const PageStrecture: React.FC = ({ children }) => {
     return (
@@ -12,7 +9,6 @@ const PageStrecture: React.FC = ({ children }) => {
             <Container>
                 {children}
             </Container>
-            <Footer />
         </>
     )
 }
