@@ -2,11 +2,12 @@ import React from 'react';
 import { InputArea, ButtonInput } from './styled';
 
 interface InputTabNameTypes {
-    onClick: (object: object) => void;
     onChange: (object: object) => void;
+    onClickClose: (object: object) => void;
+    onClickDelete: (object: object) => void;
 }
 
-const InputTabName:React.FC<InputTabNameTypes> = ({onClick, onChange}) => {
+const InputTabName:React.FC<InputTabNameTypes> = ({ onChange, onClickClose, onClickDelete}) => {
     return (
         <InputArea>            
             <input type="text" name="nameTab" 
@@ -15,7 +16,10 @@ const InputTabName:React.FC<InputTabNameTypes> = ({onClick, onChange}) => {
                 autoFocus={true}
                 onChange={onChange}
             />
-            <ButtonInput onClick={onClick}>Close</ButtonInput>
+            <div>
+                <ButtonInput onClick={onClickDelete}>Delete note</ButtonInput>
+                <ButtonInput onClick={onClickClose}>Close</ButtonInput>
+            </div>
         </InputArea>
     );
 }
