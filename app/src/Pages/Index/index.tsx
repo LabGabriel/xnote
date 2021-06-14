@@ -5,6 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 //Components
 import PageStrecture from 'Components/PageStrecture';
 import Toast from 'Components/Toast';
+import Modal from 'Components/Modal';
 import TextArea from 'Components/TextArea';
 import InputTabName from 'Components/InputTabName';
 import Footer from 'Components/Footer';
@@ -26,6 +27,7 @@ const Index: React.FC = () => {
 
     const [isToastActive, setIsToastActive] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
+    const [isModalActive, setIsModalActive] = useState(false);
 
     const [xNoteInfo, setXNoteInfo] = useState<xNoteInfoTypes>({
         id_note: Math.floor(Math.random() * 1000),
@@ -137,12 +139,26 @@ const Index: React.FC = () => {
         }, 2500);
     }
 
+    const showAbout = () => {
+        setIsModalActive(true)
+    }
+
+    const hideAbout = () => {
+        setIsModalActive(false)
+    }
+
     return (
         <>
             <PageStrecture>
                 {isToastActive && (
                     <Toast
                         message={toastMessage}
+                    />
+                )}
+
+                {isModalActive && (
+                    <Modal 
+                        onClick={hideAbout}
                     />
                 )}
 
@@ -200,6 +216,7 @@ const Index: React.FC = () => {
             <Footer
                 onClick={deleteAllNote}
                 amountNote={noteStorage.length + 1}
+                onClickAbout={showAbout}
             />
         </>
     )

@@ -5,9 +5,10 @@ import { FooterStyled, NavFooter } from './styled';
 interface FooterTypes {
     onClick: () => void;
     amountNote: number;
+    onClickAbout: () => void;
 }
 
-const Footer: React.FC<FooterTypes> = ({onClick, amountNote}) => {
+const Footer: React.FC<FooterTypes> = ({onClick, amountNote, onClickAbout}) => {
     return (
         <FooterStyled>
             <div>
@@ -19,7 +20,7 @@ const Footer: React.FC<FooterTypes> = ({onClick, amountNote}) => {
             </div>
             <div>
                 <NavFooter>
-                    <li>About</li>
+                    <li onClick={onClickAbout}>About</li>
                 </NavFooter>
             </div>
         </FooterStyled>
