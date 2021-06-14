@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 
 //Components
 import PageStrecture from 'Components/PageStrecture';
+import Toast from 'Components/Toast';
 import TextArea from 'Components/TextArea';
 import InputTabName from 'Components/InputTabName';
 import Footer from 'Components/Footer';
@@ -23,6 +24,9 @@ const Index: React.FC = () => {
     const [idTab, setIdTab] = useState("");
     const [noteContent, setNoteContent] = useState("");
 
+    const [isToastActive, setIsToastActive] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+
     const [xNoteInfo, setXNoteInfo] = useState<xNoteInfoTypes>({
         id_note: Math.floor(Math.random() * 1000),
         title_note: "New note",
@@ -40,6 +44,12 @@ const Index: React.FC = () => {
         const storageGet: any = JSON.parse(localStorage.getItem('xNoteInfo')!);
         localStorage.setItem('xNoteInfo', JSON.stringify([...storageGet, xNoteInfo]));
         setNoteStorage(storageGet);
+
+        setToastMessage("Created new note");
+        setIsToastActive(true);
+        setTimeout(() => {
+            setIsToastActive(false);
+        }, 2500);
     }
 
     useEffect(() => {
@@ -49,7 +59,7 @@ const Index: React.FC = () => {
         }
 
         setNoteStorage(storageGet);
-                
+
     }, [xNoteInfo, noteContent]);
 
     const toggleInput = (e: any) => {
@@ -98,12 +108,18 @@ const Index: React.FC = () => {
         noteStorage.filter((xNoteInfo: xNoteInfoTypes, index) => {
             if (xNoteInfo.id_note === Number(idTab)) {
                 const storageGet: any = JSON.parse(localStorage.getItem('xNoteInfo')!);
-                
+
                 storageGet.splice(index, 1)
 
                 localStorage.setItem('xNoteInfo', JSON.stringify(storageGet));
-                setNoteContent(storageGet);  
-                setIsInputActive(false);              
+                setNoteContent(storageGet);
+                setIsInputActive(false);
+
+                setToastMessage("Note deleted");
+                setIsToastActive(true);
+                setTimeout(() => {
+                    setIsToastActive(false);
+                }, 2500);
             }
             return true
         })
@@ -111,13 +127,25 @@ const Index: React.FC = () => {
 
     const deleteAllNote = () => {
         localStorage.setItem('xNoteInfo', '[]');
-        setNoteStorage([]); 
-        setIsInputActive(false); 
+        setNoteStorage([]);
+        setIsInputActive(false);
+
+        setToastMessage("All notes deleted");
+        setIsToastActive(true);
+        setTimeout(() => {
+            setIsToastActive(false);
+        }, 2500);
     }
 
     return (
         <>
             <PageStrecture>
+                {isToastActive && (
+                    <Toast
+                        message={toastMessage}
+                    />
+                )}
+
                 <Tabs>
                     <TabListStyled>
                         <div className="tab-area custom-scroll">
@@ -169,7 +197,7 @@ const Index: React.FC = () => {
                     }
                 </Tabs>
             </PageStrecture>
-            <Footer 
+            <Footer
                 onClick={deleteAllNote}
                 amountNote={noteStorage.length + 1}
             />
