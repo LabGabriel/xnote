@@ -12,7 +12,7 @@
 
 ## 📝 About 
 
-🌐 app: [https://gabriel-silverio-96.github.io/xnote/](https://gabriel-silverio-96.github.io/xnote/)
+🌐 app: [https://gabriel-silverio-96.github.io/xnote](https://gabriel-silverio-96.github.io/xnote)
 
 Add your everyday notes
 
