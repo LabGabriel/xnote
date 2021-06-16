@@ -11,7 +11,7 @@ const InputTabName:React.FC<InputTabNameTypes> = ({ onChange, onClickClose, onCl
     return (
         <InputArea>            
             <input type="text" name="nameTab" 
-                placeholder="Note name"
+                placeholder="Tab name"
                 autoComplete="off"
                 autoFocus={true}
                 onChange={onChange}
