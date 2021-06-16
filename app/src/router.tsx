@@ -8,15 +8,13 @@ const Router:React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Index}/>
+                <Route exact path="/" component={Index} />
 
-                 {/* Config githubpages */}
-                 <Route path="/xnote">
-                        <Redirect to="/" />
-                    </Route>
-                    <Route path="*">
-                        <Redirect to="/" />
-                    </Route>
+                {/* Config githubpages */}
+                <Route path="/xnote" component={Index} />
+                <Route path="*">
+                    <Redirect to="/xnote" />
+                </Route>
             </Switch>
         </BrowserRouter>
     )
