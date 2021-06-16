@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/xnote/static/js/main.0c26941f.chunk.js",
-    "main.js.map": "/xnote/static/js/main.0c26941f.chunk.js.map",
+    "main.js": "/xnote/static/js/main.f4c46386.chunk.js",
+    "main.js.map": "/xnote/static/js/main.f4c46386.chunk.js.map",
     "runtime-main.js": "/xnote/static/js/runtime-main.1faad7c2.js",
     "runtime-main.js.map": "/xnote/static/js/runtime-main.1faad7c2.js.map",
     "static/css/2.798cc4d7.chunk.css": "/xnote/static/css/2.798cc4d7.chunk.css",
-    "static/js/2.b86d81e5.chunk.js": "/xnote/static/js/2.b86d81e5.chunk.js",
-    "static/js/2.b86d81e5.chunk.js.map": "/xnote/static/js/2.b86d81e5.chunk.js.map",
+    "static/js/2.3f16c78d.chunk.js": "/xnote/static/js/2.3f16c78d.chunk.js",
+    "static/js/2.3f16c78d.chunk.js.map": "/xnote/static/js/2.3f16c78d.chunk.js.map",
     "index.html": "/xnote/index.html",
     "static/css/2.798cc4d7.chunk.css.map": "/xnote/static/css/2.798cc4d7.chunk.css.map",
-    "static/js/2.b86d81e5.chunk.js.LICENSE.txt": "/xnote/static/js/2.b86d81e5.chunk.js.LICENSE.txt",
+    "static/js/2.3f16c78d.chunk.js.LICENSE.txt": "/xnote/static/js/2.3f16c78d.chunk.js.LICENSE.txt",
     "static/media/background-modal.026006b8.png": "/xnote/static/media/background-modal.026006b8.png",
     "static/media/icon-github.f69e45e4.svg": "/xnote/static/media/icon-github.f69e45e4.svg",
     "static/media/logo-xnote.6c00d0c4.svg": "/xnote/static/media/logo-xnote.6c00d0c4.svg"
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.1faad7c2.js",
     "static/css/2.798cc4d7.chunk.css",
-    "static/js/2.b86d81e5.chunk.js",
-    "static/js/main.0c26941f.chunk.js"
+    "static/js/2.3f16c78d.chunk.js",
+    "static/js/main.f4c46386.chunk.js"
   ]
 }
