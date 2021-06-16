@@ -140,11 +140,11 @@ const Index: React.FC = () => {
     }
 
     const showAbout = () => {
-        setIsModalActive(true)
+        setIsModalActive(true);
     }
 
     const hideAbout = () => {
-        setIsModalActive(false)
+        setIsModalActive(false);
     }
 
     return (
