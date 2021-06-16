@@ -44,6 +44,10 @@ export const ModalContent = styled.div<ModalTypes>`
             color: white;
         }
     }
+
+    @media (max-width: 767px) {
+        width: 15.625rem;
+    }
 `
 
 export const ModalHeader = styled.div`
