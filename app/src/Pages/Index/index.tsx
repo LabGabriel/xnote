@@ -140,11 +140,11 @@ const Index: React.FC = () => {
     }
 
     const showAbout = () => {
-        setIsModalActive(true);
+        setIsModalActive(true)
     }
 
     const hideAbout = () => {
-        setIsModalActive(false);
+        setIsModalActive(false)
     }
 
     return (
@@ -215,7 +215,7 @@ const Index: React.FC = () => {
             </PageStrecture>
             <Footer
                 onClick={deleteAllNote}
-                amountNote={noteStorage.length + 1}
+                amountNote={noteStorage === null ? 0 : noteStorage.length+1}
                 onClickAbout={showAbout}
             />
         </>
