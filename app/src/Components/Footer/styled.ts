@@ -16,7 +16,8 @@ export const FooterStyled = styled.footer`
     border-right: 0;
     text-align: right;
     background: #000000;
-
+    width: -moz-available;
+    
     div {
         margin-bottom: 1rem;
     }
