@@ -1,17 +1,15 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-//Pages
-import Index from 'Pages/Index';
+import Xnote from "pages/xnote";
+import React from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 const Router:React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Index} />
+                <Route exact path="/" component={Xnote} />
 
                 {/* Config githubpages */}
-                <Route path="/xnote" component={Index} />
+                <Route path="/xnote" component={Xnote} />
                 <Route path="*">
                     <Redirect to="/xnote" />
                 </Route>
