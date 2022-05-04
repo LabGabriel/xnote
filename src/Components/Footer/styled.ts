@@ -21,7 +21,7 @@ export const FooterStyled = styled.footer`
     div {
         margin-bottom: 1rem;
     }
-`
+`;
 
 export const NavFooter = styled.ul`
     list-style: none;
@@ -46,4 +46,4 @@ export const NavFooter = styled.ul`
             }
         }
     }
-`
+`;

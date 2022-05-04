@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { Tabs, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -106,7 +106,7 @@ const Index: React.FC = () => {
         })
     }
 
-    const deleteNote = (e: any) => {
+    const deleteNote = (e: MouseEventHandler<HTMLButtonElement>) => {
         noteStorage.filter((xNoteInfo: xNoteInfoTypes, index) => {
             if (xNoteInfo.id_note === Number(idTab)) {
                 const storageGet: any = JSON.parse(localStorage.getItem('xNoteInfo')!);
