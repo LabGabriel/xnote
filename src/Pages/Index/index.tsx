@@ -3,12 +3,12 @@ import { Tabs, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 //Components
-import PageStrecture from 'Components/PageStrecture';
-import Toast from 'Components/Toast';
-import Modal from 'Components/Modal';
-import TextArea from 'Components/TextArea';
-import InputTabName from 'Components/InputTabName';
-import Footer from 'Components/Footer';
+import PageStrecture from 'components/PageStrecture';
+import Toast from 'components/Toast';
+import Modal from 'components/Modal';
+import TextArea from 'components/TextArea';
+import InputTabName from 'components/InputTabName';
+import Footer from 'components/Footer';
 
 //Styled
 import { TabListStyled, TabStyled, ButtonPlus } from './styled';
