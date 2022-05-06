@@ -1,34 +1,25 @@
-import Footer from 'components/Footer';
-import InputTabName from 'components/InputTabName';
-import Modal from 'components/Modal';
-import PageStrecture from 'components/PageStrecture';
-import TextArea from 'components/TextArea';
-import Toast from 'components/Toast';
+import Dialog from "pages/xnote/Dialog";
+import Footer from "components/Footer";
+import Modal from "components/Modal";
+import PageStrecture from "components/PageStrecture";
+import Toast from "components/Toast";
 import React from "react";
-import { TabPanel, Tabs } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
-import { IXnoteFields } from './types/types.component';
+import "react-tabs/style/react-tabs.css";
+import TabsWrapper from "./TabsWrapper";
 
 const xnoteView: React.FC<any> = (props) => {
     const {
-        noteStorage,
+        noteContent,
         isToastActive,
-        toastMessage, 
-        isModalActive, 
-        newTab,
-        toggleInput,
-        handleTitleName,
-        handleContent,
-        deleteNote,
+        toastMessage,
+        isModalActive,
         deleteAllNote,
         showAbout,
         hideAbout,
-        isInputActive
     } = props;
     return (
         <>
-         <PageStrecture>
+            <PageStrecture>
                 {isToastActive && (
                     <Toast
                         message={toastMessage}
@@ -36,65 +27,23 @@ const xnoteView: React.FC<any> = (props) => {
                 )}
 
                 {isModalActive && (
-                    <Modal 
+                    <Modal
                         onClick={hideAbout}
                     />
                 )}
 
-                <Tabs>
-                    <TabListStyled>
-                        <div className="tab-area custom-scroll">
-                            <ButtonPlus onClick={newTab}>+</ButtonPlus>
-                            {
-                                noteStorage !== null && noteStorage.length > 0 ?
-                                    (
-                                        noteStorage.map((xNoteInfo: IXnoteFields) => {
-                                            return (
-                                                <TabStyled
-                                                    key={xNoteInfo.id_note}
-                                                    data-id={xNoteInfo.id_note}
-                                                    onDoubleClick={toggleInput}
-                                                    title="Double click select options">
-                                                    {xNoteInfo.title_note}
-                                                </TabStyled>
-                                            )
-                                        })
-                                    ) : "Add new note"
-                            }
-                        </div>
+                <TabsWrapper />
 
-                        {
-                            isInputActive && (
-                                <InputTabName
-                                    onClickClose={toggleInput}
-                                    onClickDelete={deleteNote}
-                                    onChange={handleTitleName}
-                                />
-                            )
-                        }
+                <Dialog
+                    open={false}
+                    onClose={() => console.log("CLose")}
+                    onSave={() => console.log("Save")}
+                />
 
-                    </TabListStyled>
-                    {
-                        noteStorage !== null ?
-                            (
-                                noteStorage.map((xNoteInfo: IXnoteFields) => {
-                                    return (
-                                        <TabPanel key={xNoteInfo.id_note}>
-                                            <TextArea
-                                                dataId={`${xNoteInfo.id_note}`}
-                                                defaultValue={xNoteInfo.content}
-                                                onChange={handleContent}
-                                            />
-                                        </TabPanel>
-                                    )
-                                })
-                            ) : ""
-                    }
-                </Tabs>
             </PageStrecture>
             <Footer
                 onClick={deleteAllNote}
-                amountNote={noteStorage === null ? 0 : noteStorage.length+1}
+                amountNote={noteContent === null ? 0 : noteContent.length + 1}
                 onClickAbout={showAbout}
             />
         </>

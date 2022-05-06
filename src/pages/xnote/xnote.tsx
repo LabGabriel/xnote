@@ -1,18 +1,18 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
-import { IXnoteFields } from "./types/types.component";
+import { XnoteContext } from "common/context/XnoteContext";
+import React, { MouseEventHandler, useContext, useEffect, useState } from "react";
+import { IXnoteContent } from "./types/types.component";
 import XnoteView from "./xnoteView";
 
 const Xnote: React.FC = () => {    
-    const [isInputActive, setIsInputActive] = useState<boolean>(false);
-    const [noteStorage, setNoteStorage] = useState<IXnoteFields[]>([]);
-    const [idTab, setIdTab] = useState<string>("");
-    const [noteContent, setNoteContent] = useState<string>("");
+    const {noteContent, setNoteContent} = useContext(XnoteContext);
 
+    const [isInputActive, setIsInputActive] = useState<boolean>(false);  
+    const [idTab, setIdTab] = useState<string>("");
     const [isToastActive, setIsToastActive] = useState(false);
     const [toastMessage, setToastMessage] = useState<string>("");
     const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
-    const [xnoteFields, setxnoteFields] = useState<IXnoteFields>({
+    const [xnoteFields, setxnoteFields] = useState<IXnoteContent>({
         id_note: Math.floor(Math.random() * 1000),
         title_note: "New note",
         content: ""
@@ -28,7 +28,7 @@ const Xnote: React.FC = () => {
         )
         const storageGet: any = JSON.parse(localStorage.getItem("xnote")!);
         localStorage.setItem("xnote", JSON.stringify([...storageGet, xnoteFields]));
-        setNoteStorage(storageGet);
+        setNoteContent(storageGet);
 
         setToastMessage("Created new note");
         setIsToastActive(true);
@@ -43,9 +43,9 @@ const Xnote: React.FC = () => {
             localStorage.setItem("xnote", JSON.stringify([]));
         }
 
-        setNoteStorage(storageGet);
+        setNoteContent(storageGet);
 
-    }, [xnoteFields, noteContent]);
+    }, []);
 
     const toggleInput = (e: any) => {
         const id = e.target.dataset.id;
@@ -59,7 +59,7 @@ const Xnote: React.FC = () => {
             value = "Add note name"
         }
 
-        noteStorage.filter((xNoteInfo: IXnoteFields, index: number) => {
+        noteContent.filter((xNoteInfo: IXnoteContent, index: number) => {
             if (xNoteInfo.id_note === Number(idTab)) {
                 xNoteInfo.title_note = value;
                 const storageGet: any = JSON.parse(localStorage.getItem("xnote")!);
@@ -75,7 +75,7 @@ const Xnote: React.FC = () => {
         const value = e.target.value;
         const id = e.target.dataset.id;
 
-        noteStorage.filter((xNoteInfo: IXnoteFields, index: number) => {
+        noteContent.filter((xNoteInfo: IXnoteContent, index: number) => {
             if (xNoteInfo.id_note === Number(id)) {
                 xNoteInfo.content = value;
                 setNoteContent(value)
@@ -90,7 +90,7 @@ const Xnote: React.FC = () => {
     }
 
     const deleteNote = (e: MouseEventHandler<HTMLButtonElement>) => {
-        noteStorage.filter((xNoteInfo: IXnoteFields, index: number) => {
+        noteContent.filter((xNoteInfo: IXnoteContent, index: number) => {
             if (xNoteInfo.id_note === Number(idTab)) {
                 const storageGet: any = JSON.parse(localStorage.getItem("xnote")!);
 
@@ -112,7 +112,7 @@ const Xnote: React.FC = () => {
 
     const deleteAllNote = () => {
         localStorage.setItem("xnote", '[]');
-        setNoteStorage([]);
+        setNoteContent([]);
         setIsInputActive(false);
 
         setToastMessage("All notes deleted");
@@ -132,7 +132,7 @@ const Xnote: React.FC = () => {
     return (
         <XnoteView 
             {...{ 
-                noteStorage,
+                noteContent,
                 isToastActive,
                 toastMessage, 
                 isModalActive, 

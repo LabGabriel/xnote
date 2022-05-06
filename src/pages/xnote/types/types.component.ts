@@ -1,5 +1,5 @@
-export interface IXnoteFields {
-    id_note: number;
+export interface IXnoteContent {
+    id_note: number | null;
     title_note: string;
     content: string;
 }
