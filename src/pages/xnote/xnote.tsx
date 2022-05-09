@@ -1,5 +1,5 @@
 import { XnoteContext } from "common/context/XnoteContext";
-import React, { MouseEventHandler, useContext, useEffect, useState } from "react";
+import React, { MouseEventHandler, useContext, useState } from "react";
 import { IXnoteContent } from "./types/types.component";
 import XnoteView from "./xnoteView";
 
@@ -36,16 +36,6 @@ const Xnote: React.FC = () => {
             setIsToastActive(false);
         }, 2500);
     }
-
-    useEffect(() => {
-        const storageGet: any = JSON.parse(localStorage.getItem("xnote")!);
-        if (storageGet === null) {
-            localStorage.setItem("xnote", JSON.stringify([]));
-        }
-
-        setNoteContent(storageGet);
-
-    }, []);
 
     const toggleInput = (e: any) => {
         const id = e.target.dataset.id;

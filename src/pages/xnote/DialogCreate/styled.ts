@@ -53,7 +53,13 @@ export const ButtonClose = styled.button`
     }
 `
 
-export const DialogBody = styled.div``
+export const DialogBody = styled.div`
+    form > span {
+        font-size: 0.8rem;
+        color: red;
+        font-weight: 100;
+    }
+`
 
 export const DialogFooter = styled.div`
     display: flex;

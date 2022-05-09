@@ -1,16 +1,16 @@
 import { XnoteContext } from "common/context/XnoteContext";
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import TabsView from "./TabsWrapperView";
 
 const TabsWrapper: React.FC = () => {
-    const { noteContent } = useContext(XnoteContext);
-
-    const createTab = () => {
-      
-    }
-
+    const { setIsOpenDialogNewNote } = useContext(XnoteContext);    
+    const storage = JSON.parse(localStorage.getItem("xnote")!);
     
-    return <TabsView {... { noteContent, createTab }} />
+    const openDialogNewNote = () => {
+        setIsOpenDialogNewNote(prevState => !prevState);
+    }
+    
+    return <TabsView {... { storage, openDialogNewNote }} />
 }
 
-export default TabsWrapper;
+export default memo(TabsWrapper);

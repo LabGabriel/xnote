@@ -6,5 +6,8 @@ export interface IXnoteContext {
     setNoteContent: React.Dispatch<React.SetStateAction<Array<IXnoteContent>>>;
 
     xnoteFields: IXnoteContent;
-    setxnoteFields: React.Dispatch<React.SetStateAction<IXnoteContent>>
+    setxnoteFields: React.Dispatch<React.SetStateAction<IXnoteContent>>;
+
+    isOpenDialogNewNote: boolean;
+    setIsOpenDialogNewNote: React.Dispatch<React.SetStateAction<boolean>>;
 }

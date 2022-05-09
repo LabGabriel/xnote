@@ -1,25 +1,26 @@
 import TextArea from "components/TextArea";
 import React from "react";
 import { TabPanel, Tabs } from "react-tabs";
+import { INoteFields } from "../common/types/types.dialog";
 import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
 
-const TabsWrapperView: React.FC<any> = ({ noteContent, createTab }) => {
+const TabsWrapperView: React.FC<any> = ({ storage, openDialogNewNote }) => {
     return (
         <Tabs>
             <TabListStyled>
                 <div className="tab-area custom-scroll">
-                    <ButtonPlus onClick={createTab}>+</ButtonPlus>
+                    <ButtonPlus onClick={openDialogNewNote}>+</ButtonPlus>
                     {
-                        noteContent && !!noteContent.length ?
+                        storage && !!storage.length ?
                             (
-                                noteContent.map((xnote: IXnoteContent) => {
+                                storage.map((note: INoteFields) => {
                                     return (
                                         <TabStyled
-                                            key={xnote.id_note}
-                                            data-id={xnote.id_note}
+                                            key={note.id_note}
+                                            data-id={note.id_note}
                                             title="Double click select options">
-                                            {xnote.title_note}
+                                            {note.title}
                                         </TabStyled>
                                     )
                                 })
@@ -28,9 +29,9 @@ const TabsWrapperView: React.FC<any> = ({ noteContent, createTab }) => {
                 </div>
             </TabListStyled>
             {
-                noteContent &&
+                storage &&
                 (
-                    noteContent.map((xnote: IXnoteContent) => {
+                    storage.map((xnote: IXnoteContent) => {
                         return (
                             <TabPanel key={xnote.id_note}>
                                 <TextArea
