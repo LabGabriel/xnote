@@ -10,4 +10,7 @@ export interface IXnoteContext {
 
     isOpenDialogCreate: boolean;
     setIsOpenDialogCreate: React.Dispatch<React.SetStateAction<boolean>>;
+    
+    isOpenDialogEdit: boolean;
+    setIsOpenDialogEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }

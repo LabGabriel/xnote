@@ -6,6 +6,7 @@ export const XnoteContext = createContext({} as IXnoteContext);
 
 export const XnoteProvider: React.FC = ({ children }) => {
     const [isOpenDialogCreate, setIsOpenDialogCreate] = useState<boolean>(false);
+    const [isOpenDialogEdit, setIsOpenDialogEdit] = useState<boolean>(false);
 
     const [noteContent, setNoteContent] = useState<IXnoteContent[]>([]);
     const [xnoteFields, setxnoteFields] = useState<IXnoteContent>({
@@ -26,7 +27,10 @@ export const XnoteProvider: React.FC = ({ children }) => {
                     setxnoteFields,
 
                     isOpenDialogCreate, 
-                    setIsOpenDialogCreate
+                    setIsOpenDialogCreate,
+
+                    isOpenDialogEdit, 
+                    setIsOpenDialogEdit
                 }
             }
         >
