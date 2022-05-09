@@ -5,7 +5,7 @@ import { INoteFields } from "../common/types/types.dialog";
 import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
 
-const TabsWrapperView: React.FC<any> = ({ storage, openDialogNewNote }) => {
+const TabsView: React.FC<any> = ({ storage, openDialogNewNote }) => {
     return (
         <Tabs>
             <TabListStyled>
@@ -48,4 +48,4 @@ const TabsWrapperView: React.FC<any> = ({ storage, openDialogNewNote }) => {
     )
 }
 
-export default TabsWrapperView;
+export default TabsView;

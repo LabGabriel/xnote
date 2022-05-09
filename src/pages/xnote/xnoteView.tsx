@@ -5,7 +5,7 @@ import PageStrecture from "components/PageStrecture";
 import Toast from "components/Toast";
 import React from "react";
 import "react-tabs/style/react-tabs.css";
-import TabsWrapper from "./TabsWrapper";
+import Tabs from "./Tabs";
 
 const xnoteView: React.FC<any> = (props) => {
     const {
@@ -32,7 +32,7 @@ const xnoteView: React.FC<any> = (props) => {
                     />
                 )}
 
-                <TabsWrapper />
+                <Tabs />
 
                 <DialogCreate />
 
