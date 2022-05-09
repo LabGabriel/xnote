@@ -8,6 +8,6 @@ export interface IXnoteContext {
     xnoteFields: IXnoteContent;
     setxnoteFields: React.Dispatch<React.SetStateAction<IXnoteContent>>;
 
-    isOpenDialogNewNote: boolean;
-    setIsOpenDialogNewNote: React.Dispatch<React.SetStateAction<boolean>>;
+    isOpenDialogCreate: boolean;
+    setIsOpenDialogCreate: React.Dispatch<React.SetStateAction<boolean>>;
 }
