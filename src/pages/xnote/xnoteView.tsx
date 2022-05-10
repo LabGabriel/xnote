@@ -6,6 +6,7 @@ import Toast from "components/Toast";
 import React from "react";
 import "react-tabs/style/react-tabs.css";
 import Tabs from "./Tabs";
+import DialogEdit from "./DialogEdit";
 
 const xnoteView: React.FC<any> = (props) => {
     const {
@@ -35,6 +36,7 @@ const xnoteView: React.FC<any> = (props) => {
                 <Tabs />
 
                 <DialogCreate />
+                <DialogEdit />
 
             </PageStrecture>
             <Footer
