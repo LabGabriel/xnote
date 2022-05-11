@@ -7,6 +7,7 @@ import TabsView from "./TabsView";
 const Tabs: React.FC = () => {
     const { setIsOpenDialogCreate, setIsOpenDialogEdit, setNoteEditDefaultValue } = useContext(XnoteContext);
     const storage = JSON.parse(localStorage.getItem("xnote")!);
+    const [lastSelectedTab, setLastSelectedTab] = useLocalStorage<string>("xnote_tab", "0");
     const [, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
     
     const openDialogCreate = () => {
@@ -32,7 +33,9 @@ const Tabs: React.FC = () => {
         setStorage(storage)
     }   
 
-    return <TabsView {... { storage, openDialogCreate, openDialogEdit, handleContent }} />
+    const onSelect = (index: number) => setLastSelectedTab(index.toString());
+
+    return <TabsView {... { storage, openDialogCreate, openDialogEdit, handleContent, onSelect, lastSelectedTab }} />
 }
 
 export default memo(Tabs);

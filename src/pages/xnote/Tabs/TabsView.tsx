@@ -5,9 +5,15 @@ import { INoteFields } from "../common/types/types.dialog";
 import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
 
-const TabsView: React.FC<any> = ({ storage, openDialogCreate, openDialogEdit, handleContent }) => {
+const TabsView: React.FC<any> = (props) => {
+    const { storage,
+        openDialogCreate,
+        openDialogEdit,
+        handleContent,
+        onSelect,
+        lastSelectedTab } = props;
     return (
-        <Tabs>
+        <Tabs onSelect={onSelect} defaultIndex={Number(lastSelectedTab)}>
             <TabListStyled>
                 <div className="tab-area custom-scroll">
                     <ButtonPlus onClick={openDialogCreate}>+</ButtonPlus>
@@ -22,7 +28,7 @@ const TabsView: React.FC<any> = ({ storage, openDialogCreate, openDialogEdit, ha
                                             title="Double click select options"
                                             onDoubleClick={() => openDialogEdit(note.id_note, note.title)}
                                         >
-                                        {note.title}
+                                            {note.title}
                                         </TabStyled>
                                     )
                                 })
