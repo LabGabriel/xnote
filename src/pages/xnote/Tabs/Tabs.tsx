@@ -1,11 +1,14 @@
 import { XnoteContext } from "common/context/XnoteContext";
-import React, { memo, useCallback, useContext } from "react";
+import useLocalStorage from "common/hooks/useLocalStorage";
+import React, { ChangeEvent, memo, useCallback, useContext } from "react";
+import { INoteFields } from "../common/types/types.dialog";
 import TabsView from "./TabsView";
 
 const Tabs: React.FC = () => {
     const { setIsOpenDialogCreate, setIsOpenDialogEdit, setNoteEditDefaultValue } = useContext(XnoteContext);
     const storage = JSON.parse(localStorage.getItem("xnote")!);
-
+    const [, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
+    
     const openDialogCreate = () => {
         setIsOpenDialogCreate(prevState => !prevState);
     }
@@ -15,7 +18,21 @@ const Tabs: React.FC = () => {
         setIsOpenDialogEdit(prevState => !prevState);
     }, [setIsOpenDialogEdit, setNoteEditDefaultValue])
 
-    return <TabsView {... { storage, openDialogCreate, openDialogEdit }} />
+    const handleContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const { value } = e.target;
+        const { id } = e.target.dataset;
+
+        const callBackNote = (note: INoteFields) => note.id_note === id
+        const [note] = storage.filter(callBackNote);
+        const indexNote = storage.findIndex(callBackNote);
+
+        note.content = value;
+        storage.splice(indexNote, 1, note);
+
+        setStorage(storage)
+    }   
+
+    return <TabsView {... { storage, openDialogCreate, openDialogEdit, handleContent }} />
 }
 
 export default memo(Tabs);

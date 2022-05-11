@@ -9,7 +9,8 @@ import DialogCreateView from "./DialogCreateView";
 const DialogCreate: React.FC = () => {
     const { isOpenDialogCreate, setIsOpenDialogCreate } = useContext(XnoteContext);
     const { register, formState: { errors }, handleSubmit, reset } = useForm<INoteFields>();
-    const [storage, setStorage] = useLocalStorage<string | any[]>("xnote", "[]");
+    const storage = JSON.parse(localStorage.getItem("xnote")!);
+    const [, setStorage] = useLocalStorage<string | any[]>("xnote", "[]");
 
     const onClose = () => {
         setIsOpenDialogCreate(prevState => !prevState);
@@ -18,7 +19,9 @@ const DialogCreate: React.FC = () => {
 
     const onSubmit = (data: IDialogTitle) => {
         const { title } = data;
-        setStorage(() => [...storage, createNote(title)]);
+        console.log(storage);
+        
+        setStorage([...storage, createNote(title)]);
         onClose();
     };
     

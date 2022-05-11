@@ -5,7 +5,7 @@ import { INoteFields } from "../common/types/types.dialog";
 import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
 
-const TabsView: React.FC<any> = ({ storage, openDialogCreate, openDialogEdit }) => {
+const TabsView: React.FC<any> = ({ storage, openDialogCreate, openDialogEdit, handleContent }) => {
     return (
         <Tabs>
             <TabListStyled>
@@ -39,7 +39,7 @@ const TabsView: React.FC<any> = ({ storage, openDialogCreate, openDialogEdit }) 
                                 <TextArea
                                     dataId={`${xnote.id_note}`}
                                     defaultValue={xnote.content}
-                                // onChange={handleContent}
+                                    onChange={handleContent}
                                 />
                             </TabPanel>
                         )

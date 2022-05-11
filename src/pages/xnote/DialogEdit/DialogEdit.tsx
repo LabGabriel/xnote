@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { XnoteContext } from "common/context/XnoteContext";
 import useLocalStorage from "common/hooks/useLocalStorage";
 import React, { useContext } from "react";
@@ -10,7 +9,7 @@ const DialogEdit: React.FC = () => {
     const { isOpenDialogEdit, setIsOpenDialogEdit, noteEditDefaultValue } = useContext(XnoteContext);
     const { id_note, title } = noteEditDefaultValue;
     const { register, formState: { errors }, handleSubmit, reset } = useForm<INoteFields>();
-    const [storage, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
+    const [, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
 
     const onClose = () => {
         setIsOpenDialogEdit(prevState => !prevState);
