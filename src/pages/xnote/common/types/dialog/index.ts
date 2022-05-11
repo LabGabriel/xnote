@@ -1,5 +1,14 @@
-import { INoteFields } from "pages/xnote/common/types/types.dialog";
 import { SubmitHandler, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+
+export interface INoteFields {
+    id_note: string;
+    title: string;
+    content: string;
+}
+
+export interface IDialogTitle {
+    title: string;
+}
 
 export interface IDialog {
     open: boolean;
@@ -9,3 +18,6 @@ export interface IDialog {
     onSubmit: SubmitHandler<INoteFields>;
     onClose: () => void;
 }
+
+export interface IDialogCreate extends IDialog {}
+export interface IDialogEdit extends IDialog, IDialogTitle {}

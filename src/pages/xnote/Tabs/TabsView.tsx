@@ -1,7 +1,7 @@
 import TextArea from "components/TextArea";
 import React from "react";
 import { TabPanel, Tabs } from "react-tabs";
-import { INoteFields } from "../common/types/types.dialog";
+import { INoteFields } from "../common/types/dialog";
 import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
 

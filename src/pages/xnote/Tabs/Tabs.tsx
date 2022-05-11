@@ -1,7 +1,7 @@
 import { XnoteContext } from "common/context/XnoteContext";
 import useLocalStorage from "common/hooks/useLocalStorage";
 import React, { ChangeEvent, memo, useCallback, useContext } from "react";
-import { INoteFields } from "../common/types/types.dialog";
+import { INoteFields } from "../common/types/dialog";
 import TabsView from "./TabsView";
 
 const Tabs: React.FC = () => {

@@ -1,7 +1,8 @@
 import React from "react";
+import { IDialogEdit } from "../common/types/dialog";
 import { ButtonClose, ButtonPrimary, ButtonSecundary, Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, Input } from "./styled";
 
-const DialogEditView: React.FC<any> = ({ open, register, errors, handleSubmit, onSubmit, onClose, title }) => {
+const DialogEditView: React.FC<IDialogEdit> = ({ open, register, errors, handleSubmit, onSubmit, onClose, title }) => {
     const isErrors = errors.title?.type === "required";
     return (
         <Dialog role="dialog" open={open}>

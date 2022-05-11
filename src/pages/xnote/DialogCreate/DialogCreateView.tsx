@@ -1,8 +1,8 @@
 import React from "react";
+import { IDialogCreate } from "../common/types/dialog";
 import { ButtonClose, ButtonPrimary, ButtonSecundary, Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, Input } from "./styled";
-import { IDialog } from "./types/types.component";
 
-const DialogCreateView: React.FC<IDialog> = ({ open, register, errors, handleSubmit, onSubmit, onClose }) => {
+const DialogCreateView: React.FC<IDialogCreate> = ({ open, register, errors, handleSubmit, onSubmit, onClose }) => {
     const isErrors = errors.title?.type === "required";
     return (
         <Dialog role="dialog" open={open}>
