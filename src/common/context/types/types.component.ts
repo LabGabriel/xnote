@@ -1,4 +1,4 @@
-import { INoteFields } from "pages/xnote/common/types/types.dialog";
+import { INoteFields } from "pages/xnote/common/types/dialog/index";
 import React from "react";
 
 export interface IXnoteContext {

@@ -1,5 +1,5 @@
 import useLocalStorage from "common/hooks/useLocalStorage";
-import { INoteFields } from "pages/xnote/common/types/types.dialog";
+import { INoteFields } from "pages/xnote/common/types/dialog/index";
 import React, { createContext, useState } from "react";
 import { IXnoteContext } from "./types/types.component";
 
