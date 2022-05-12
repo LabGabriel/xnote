@@ -1,10 +1,9 @@
-import { INoteFields } from "pages/xnote/common/types/dialog";
-import { IXnoteContent } from "pages/xnote/types/types.component";
+import { INoteFields } from "pages/xnote/common/types/types.dialog";
 import React from "react";
 
 export interface IXnoteContext {
-    noteContent: Array<IXnoteContent>;    
-    setNoteContent: React.Dispatch<React.SetStateAction<Array<IXnoteContent>>>;
+    noteContent: INoteFields[];    
+    setNoteContent: React.Dispatch<React.SetStateAction<INoteFields[]>>;
 
     isOpenDialogCreate: boolean;
     setIsOpenDialogCreate: React.Dispatch<React.SetStateAction<boolean>>;

@@ -4,7 +4,7 @@ import { IXnoteContent } from "./types/types.component";
 import XnoteView from "./xnoteView";
 
 const Xnote: React.FC = () => {    
-    const {noteContent, setNoteContent} = useContext(XnoteContext);
+    const {noteContent, setNoteContent} = useContext<any>(XnoteContext);
 
     const [isInputActive, setIsInputActive] = useState<boolean>(false);  
     const [idTab, setIdTab] = useState<string>("");

@@ -1,12 +1,13 @@
 import { XnoteContext } from "common/context/XnoteContext";
 import useLocalStorage from "common/hooks/useLocalStorage";
 import React, { useContext } from "react";
+import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import { IDialogTitle, INoteFields } from "../common/types/dialog";
 import DialogEditView from "./DialogEditView";
 
 const DialogEdit: React.FC = () => {
-    const { isOpenDialogEdit, setIsOpenDialogEdit, noteEditDefaultValue } = useContext(XnoteContext);
+    const { isOpenDialogEdit, setIsOpenDialogEdit, noteEditDefaultValue, setNoteContent } = useContext(XnoteContext);
     const { id_note, title } = noteEditDefaultValue;
     const { register, formState: { errors }, handleSubmit, reset } = useForm<INoteFields>();
     const [, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
@@ -24,8 +25,11 @@ const DialogEdit: React.FC = () => {
         const indexNote = storage.findIndex(callBackNote);
         note.title = title;
         storage.splice(indexNote, 1, note);
-        
-        setStorage(storage);
+
+        ReactDOM.unstable_batchedUpdates(() => {
+            setStorage(storage);
+            setNoteContent(storage);
+        })
         onClose();
     };
 

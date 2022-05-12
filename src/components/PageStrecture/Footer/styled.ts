@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FooterStyled = styled.footer`
+export const Footer = styled.footer`
     width: -webkit-fill-available;
     padding: 0.5rem 1rem 0;
     position: fixed;
