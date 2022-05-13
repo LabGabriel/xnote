@@ -2,23 +2,25 @@ import TextArea from "components/TextArea";
 import React from "react";
 import { TabPanel, Tabs } from "react-tabs";
 import { INoteFields } from "../common/types/dialog";
-import { IXnoteContent } from "../types/types.component";
 import { ButtonPlus, TabListStyled, TabStyled } from "./styled";
+import { ITabs } from "./types/types.component";
 
-const TabsView: React.FC<any> = (props) => {
-    const { storage,
+const TabsView: React.FC<ITabs> = (props) => {
+    const { 
+        storage,
         openDialogCreate,
         openDialogEdit,
         handleContent,
         onSelect,
-        lastSelectedTab } = props;
+        lastSelectedTab
+    } = props;
     return (
         <Tabs onSelect={onSelect} defaultIndex={Number(lastSelectedTab)}>
             <TabListStyled>
                 <div className="tab-area custom-scroll">
                     <ButtonPlus onClick={openDialogCreate}>+</ButtonPlus>
                     {
-                        storage && !!storage.length ?
+                        !!storage.length ?
                             (
                                 storage.map((note: INoteFields) => {
                                     return (
@@ -39,12 +41,12 @@ const TabsView: React.FC<any> = (props) => {
             {
                 storage &&
                 (
-                    storage.map((xnote: IXnoteContent) => {
+                    storage.map((note: INoteFields) => {
                         return (
-                            <TabPanel key={xnote.id_note}>
+                            <TabPanel key={note.id_note}>
                                 <TextArea
-                                    dataId={`${xnote.id_note}`}
-                                    defaultValue={xnote.content}
+                                    dataId={`${note.id_note}`}
+                                    defaultValue={note.content}
                                     onChange={handleContent}
                                 />
                             </TabPanel>
