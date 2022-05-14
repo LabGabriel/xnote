@@ -15,7 +15,7 @@ const TabsView: React.FC<ITabs> = (props) => {
         lastSelectedTab
     } = props;
     return (
-        <Tabs onSelect={onSelect} defaultIndex={Number(lastSelectedTab)}>
+        <Tabs onSelect={onSelect} defaultIndex={lastSelectedTab}>
             <TabListStyled>
                 <div className="tab-area custom-scroll">
                     <ButtonPlus onClick={openDialogCreate}>+</ButtonPlus>

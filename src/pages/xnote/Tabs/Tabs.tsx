@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 
 const Tabs: React.FC = () => {
     const { setIsOpenDialogCreate, setIsOpenDialogEdit, setNoteEditDefaultValue, noteContent, setNoteContent } = useContext(XnoteContext);    
-    const [lastSelectedTab, setLastSelectedTab] = useLocalStorage<string>("xnote_tab", "0");
+    const [lastSelectedTab, setLastSelectedTab] = useLocalStorage<number>("xnote_tab", 0);
     const [, setStorage] = useLocalStorage<INoteFields[]>("xnote", "[]");
 
     const openDialogCreate = () => {
@@ -37,7 +37,7 @@ const Tabs: React.FC = () => {
         })        
     }
 
-    const onSelect = (index: number) => setLastSelectedTab(index.toString());
+    const onSelect = (index: number) => setLastSelectedTab(index);
 
     return <TabsView storage={noteContent}{... { openDialogCreate, openDialogEdit, handleContent, onSelect, lastSelectedTab }} />
 }

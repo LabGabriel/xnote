@@ -7,5 +7,5 @@ export interface ITabs extends TabsProps {
     openDialogCreate: () => void;
     openDialogEdit: (id_note: string, title: string) => void;
     handleContent?: ChangeEventHandler<HTMLTextAreaElement>;
-    lastSelectedTab: string;
+    lastSelectedTab: number;
 }

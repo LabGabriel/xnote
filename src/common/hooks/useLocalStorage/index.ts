@@ -1,6 +1,6 @@
 import React, { SetStateAction, useEffect, useState } from "react"
 
-const useLocalStorage = <T>(key: string, initialState: string): [T, React.Dispatch<SetStateAction<T>>] => {
+const useLocalStorage = <T>(key: string, initialState: any): [T, React.Dispatch<SetStateAction<T>>] => {
     const [state, setState] = useState(() => {
         const storage = localStorage.getItem(key);
         if (storage) {
