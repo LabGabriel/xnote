@@ -33,7 +33,7 @@ const Tabs: React.FC = () => {
 
         ReactDOM.unstable_batchedUpdates(() => {
             setStorage(storage);
-            setNoteContent(storage);
+            setTimeout(() => setNoteContent(storage), 500);
         })        
     }
 
