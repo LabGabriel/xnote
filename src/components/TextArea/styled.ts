@@ -6,7 +6,7 @@ export const TextAreaStyled = styled.textarea`
     margin-top: 1rem;
     padding-right: 1rem;
     background-color: transparent;
-    height: 100vh;
+    height: 75vh;
     color: white;
     font-size: 1rem;
     outline: none;
