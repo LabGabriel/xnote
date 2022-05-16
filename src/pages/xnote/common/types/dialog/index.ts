@@ -20,4 +20,6 @@ export interface IDialog {
 }
 
 export interface IDialogCreate extends IDialog {}
-export interface IDialogEdit extends IDialog, IDialogTitle {}
+export interface IDialogEdit extends IDialog, IDialogTitle {
+    deleteThisNote: () => void;
+}

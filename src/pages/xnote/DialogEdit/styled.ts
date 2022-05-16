@@ -75,9 +75,9 @@ export const ButtonPrimary = styled.button`
     cursor: pointer;
 `
 
-export const ButtonSecundary = styled(ButtonPrimary)`
-    background-color: transparent;
-    border: 0.02rem solid #959595;
+export const ButtonDelete = styled(ButtonPrimary)`
+    background-color: #cd0909;
+    border: 0;
     color: #FFFFFF;
 `
 

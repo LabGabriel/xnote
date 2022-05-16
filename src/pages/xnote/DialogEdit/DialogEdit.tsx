@@ -18,11 +18,11 @@ const DialogEdit: React.FC = () => {
     };
 
     const onSubmit = (data: IDialogTitle) => {
-        const storage = JSON.parse(localStorage.getItem("xnote")!);
+        const storage: INoteFields[] = JSON.parse(localStorage.getItem("xnote")!);
         const { title } = data;
-        const callBackNote = (note: INoteFields) => note.id_note === id_note
-        const [note] = storage.filter(callBackNote);
-        const indexNote = storage.findIndex(callBackNote);
+        const filterIdNote = (note: INoteFields) => note.id_note === id_note;
+        const [note] = storage.filter(filterIdNote);
+        const indexNote = storage.findIndex(filterIdNote);
         note.title = title;
         storage.splice(indexNote, 1, note);
 
@@ -33,9 +33,22 @@ const DialogEdit: React.FC = () => {
         onClose();
     };
 
+    const deleteThisNote = () => {
+        const storage: INoteFields[] = JSON.parse(localStorage.getItem("xnote")!);        
+        const filterIdNote = (note: INoteFields) => note.id_note === id_note;
+        const indexNote = storage.findIndex(filterIdNote);
+        storage.splice(indexNote, 1);
+        
+        ReactDOM.unstable_batchedUpdates(() => {
+            setStorage(storage);
+            setNoteContent(storage);
+        })
+        onClose();
+    };
+
     return (
         <DialogEditView
-            {...{ register, errors, handleSubmit, onSubmit, onClose, title }}
+            {...{ register, errors, handleSubmit, onSubmit, onClose, title, deleteThisNote }}
             open={isOpenDialogEdit}
         />
     )
