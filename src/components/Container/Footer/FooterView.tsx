@@ -19,7 +19,9 @@ const FooterView: React.FC<IFooter> = ({ onDeleteAllNote, amountNote, onDialogAb
             </div>
             <div>
                 <NavFooter>
-                    <li onClick={onDialogAbout}>About</li>
+                    <li>
+                        <button onClick={onDialogAbout}>About</button>
+                    </li>
                 </NavFooter>
             </div>
         </Footer>
