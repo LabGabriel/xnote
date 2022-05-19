@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { IDialogContent } from "./types/types.style";
 
-export const ModalContainer = styled.div`
+export const Dialog = styled.div`
   position: fixed;
   z-index: 1;
   left: 0;
@@ -11,11 +12,7 @@ export const ModalContainer = styled.div`
   background-color: rgba(0,0,0,0.4);
 `
 
-interface ModalTypes {
-    backgroundModal: string
-}
-
-export const ModalContent = styled.div<ModalTypes>`
+export const DialogContent = styled.div<IDialogContent>`
     position: absolute;
     left: 50%;
     top: 50%;
@@ -50,7 +47,7 @@ export const ModalContent = styled.div<ModalTypes>`
     }
 `
 
-export const ModalHeader = styled.div`
+export const DialogHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,7 +74,7 @@ export const ButtonClose = styled.button`
     }
 `
 
-export const ModalFooter = styled.div`
+export const DialogFooter = styled.div`
     margin-top: 5rem;
 
     a {

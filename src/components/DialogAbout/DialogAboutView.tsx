@@ -2,14 +2,14 @@ import backgroundModal from "assets/background-modal.png";
 import IconGithub from 'assets/icon/icon-github.svg';
 import Logo from 'assets/logo-xnote.svg';
 import React from "react";
-import { ButtonClose, LogoFooter, ModalContainer, ModalContent, ModalFooter, ModalHeader } from "./styled";
-import { IModal } from "./types/types.component";
+import { ButtonClose, LogoFooter, Dialog, DialogContent, DialogFooter, DialogHeader } from "./styled";
+import { IDialogAbout } from "./types/types.component";
 
-const ModalView: React.FC<IModal> = ({ onClick }) => {
+const DialogAboutView: React.FC<IDialogAbout> = ({ onClick }) => {
     return (
-        <ModalContainer>
-            <ModalContent backgroundModal={backgroundModal}>
-                <ModalHeader>
+        <Dialog>
+            <DialogContent backgroundModal={backgroundModal}>
+                <DialogHeader>
                     <div className="logo">
                         <img src={Logo} alt="Logo Xnote" />
                     </div>
@@ -18,7 +18,7 @@ const ModalView: React.FC<IModal> = ({ onClick }) => {
                             <p>+</p>
                         </ButtonClose>
                     </div>
-                </ModalHeader>
+                </DialogHeader>
                 <h1>
                     Create new notes is very simple
                 </h1>
@@ -26,17 +26,17 @@ const ModalView: React.FC<IModal> = ({ onClick }) => {
                     <li>Click in button plus, to create new note</li>
                     <li>To edit name tab or delete note, double click in tab</li>
                 </ul>
-                <ModalFooter>
+                <DialogFooter>
                     <a href="https://github.com/Gabriel-Silverio-96/xnote" target="_blank" rel="noreferrer">
                         <LogoFooter>
                             <img src={IconGithub} alt="Icon Github" />
                         </LogoFooter>
                         <p>Respository</p>
                     </a>
-                </ModalFooter>
-            </ModalContent>
-        </ModalContainer>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
     )
 }
 
-export default ModalView;
+export default DialogAboutView;
