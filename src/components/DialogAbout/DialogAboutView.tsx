@@ -5,16 +5,16 @@ import React from "react";
 import { ButtonClose, LogoFooter, Dialog, DialogContent, DialogFooter, DialogHeader } from "./styled";
 import { IDialogAbout } from "./types/types.component";
 
-const DialogAboutView: React.FC<IDialogAbout> = ({ onClick }) => {
+const DialogAboutView: React.FC<IDialogAbout> = ({ onClose, open }) => {
     return (
-        <Dialog>
+        <Dialog open={open}>
             <DialogContent backgroundModal={backgroundModal}>
                 <DialogHeader>
                     <div className="logo">
                         <img src={Logo} alt="Logo Xnote" />
                     </div>
                     <div>
-                        <ButtonClose onClick={onClick}>
+                        <ButtonClose onClick={onClose}>
                             <p>+</p>
                         </ButtonClose>
                     </div>

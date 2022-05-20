@@ -1,3 +1,4 @@
 export interface IDialogAbout {
-    onClick?: () => void;
+    onClose?: () => void;
+    open: boolean;
 }
