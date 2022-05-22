@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { IDialogContent } from "./types/types.style";
-import { IDialogStyled } from "./types/types.styled";
+import { IDialogStyled, IDialogContentStyled } from "./types/types.styled";
 
 export const Dialog = styled.div<IDialogStyled>`
   display: ${({ open }) => open ? "flex" : "none"};
@@ -14,7 +13,7 @@ export const Dialog = styled.div<IDialogStyled>`
   background-color: rgba(0,0,0,0.4);
 `
 
-export const DialogContent = styled.div<IDialogContent>`
+export const DialogContent = styled.div<IDialogContentStyled>`
     position: absolute;
     left: 50%;
     top: 50%;
