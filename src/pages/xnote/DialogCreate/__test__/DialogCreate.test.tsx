@@ -38,4 +38,44 @@ describe("Test component <DialogCreateRender/>", () => {
         ReactDOM.render(<DialogCreateRender />, div);
         ReactDOM.unmountComponentAtNode(div);
     });    
+
+    it("Should show dialog display none when open equal false", () => {
+        const { container } = render(<DialogCreateRender />);
+        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
+    
+        expect(dialog).toHaveStyle({ display: "none" });
+    });
+    
+    it("Should show dialog display block when open equal true", () => {
+        const { container, getByTestId } = render(<DialogCreateRender />);
+        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        userEvent.click(buttonOpenDialog);
+    
+        expect(dialog).toHaveStyle({ display: "flex" });
+    });
+    
+    it(`Should show message error ${MOCK_MESSAGE_ERROR} when input title value empty`, async () => {
+        const { getByTestId, getByText } = render(<DialogCreateRender />);
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        userEvent.click(buttonOpenDialog);
+    
+        await waitFor(() => {
+            const buttonSave = getByText(/save/i) as HTMLButtonElement;
+            userEvent.click(buttonSave);
+        })
+        
+        expect(getByText(MOCK_MESSAGE_ERROR)).toBeInTheDocument();
+    });
+    
+    it(`Should show input title value ${MOCK_TITLE_NOTE}`, () => {
+        const { container, getByTestId } = render(<DialogCreateRender />);
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        userEvent.click(buttonOpenDialog);
+    
+        const inputTitle = container.querySelector("[name=title]") as HTMLInputElement;
+        userEvent.type(inputTitle, MOCK_TITLE_NOTE);
+    
+        expect(inputTitle).toHaveValue(MOCK_TITLE_NOTE);
+    });
 });
