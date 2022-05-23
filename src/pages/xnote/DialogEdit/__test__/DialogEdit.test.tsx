@@ -37,4 +37,38 @@ describe("Test component <DialogEdit />", () => {
         ReactDOM.render(<DialogEditRender />, div);
         ReactDOM.unmountComponentAtNode(div);
     });    
+
+    it("Should show dialog display none when open equal false", () => {
+        const { container } = render(<DialogEditRender />);
+        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
+    
+        expect(dialog).toHaveStyle({ display: "none" });
+    });
+    
+    it("Should show dialog display block when open equal true", () => {
+        const { container, getByTestId } = render(<DialogEditRender />);
+        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        userEvent.click(buttonOpenDialog);
+    
+        expect(dialog).toHaveStyle({ display: "flex" });
+    });
+    
+    it(`Should show input title value ${MOCK_TITLE_NOTE}`, () => {
+        const { container } = render(<DialogEditRender title={MOCK_TITLE_NOTE} />);
+        const inputTitle = container.querySelector("[name=title]") as HTMLInputElement;
+        expect(inputTitle).toHaveValue(MOCK_TITLE_NOTE);
+    });
+    
+    it("Should have one called click button delete", () => {
+        const deleteThisNote = jest.fn();
+        const { getByTestId, getByText } = render(<DialogEditRender {...{ deleteThisNote }} />);
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        userEvent.click(buttonOpenDialog);
+    
+        const buttonDelete = getByText("Delete");
+        userEvent.click(buttonDelete);
+    
+        expect(deleteThisNote).toHaveBeenCalledTimes(1);
+    });
 });
