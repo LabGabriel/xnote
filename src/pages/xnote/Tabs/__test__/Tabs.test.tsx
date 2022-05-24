@@ -29,4 +29,38 @@ describe("Test component <Tab />", () => {
         ReactDOM.render(<TabRender />, div);
         ReactDOM.unmountComponentAtNode(div);
     });    
+
+    it("Should show one tab", () => {
+        const { getByText } = render(<TabRender storage={MOCK_TAB} />);
+        const tab = getByText(MOCK_TAB.shift()?.title!);
+    
+        expect(tab).toBeInTheDocument();
+    });
+    
+    it("Should have one called click button openDialogCreate", () => {
+        const openDialogCreate = jest.fn();
+        const { getByText } = render(<TabRender {...{ openDialogCreate }} />);
+        const buttonPlus = getByText("+") as HTMLButtonElement;
+        userEvent.click(buttonPlus);
+    
+        expect(openDialogCreate).toHaveBeenCalledTimes(1);
+    });
+    
+    it("Should have one called click button openDialogEdit", () => {
+        const openDialogEdit = jest.fn();
+        const { getByText } = render(<TabRender {...{ openDialogEdit }} storage={MOCK_TAB} />);
+        const tab = getByText(MOCK_TAB.shift()?.title!) as HTMLLIElement;
+        userEvent.dblClick(tab);
+    
+        expect(openDialogEdit).toHaveBeenCalledTimes(1);
+    });
+    
+    it(`Should have ${MOCK_TAB_CONTENT.length} called onChange textarea handleContent`, () => {
+        const handleContent = jest.fn();
+        const { container } = render(<TabRender {...{ handleContent }} storage={MOCK_TAB} />);
+        const textArea = container.querySelector("textarea") as HTMLTextAreaElement;
+        userEvent.type(textArea, MOCK_TAB_CONTENT);
+    
+        expect(handleContent).toHaveBeenCalledTimes(MOCK_TAB_CONTENT.length);
+    });      
 });
