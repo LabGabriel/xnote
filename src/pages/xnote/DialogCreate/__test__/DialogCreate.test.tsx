@@ -27,7 +27,7 @@ const DialogCreateRender: React.FC<any> = (props) => {
 }
 
 afterEach(cleanup);
-describe("Test component <DialogCreateRender/>", () => {
+describe("Test component <DialogCreate />", () => {
     it("Should render the component", () => {
         const { container } = render(<DialogCreateRender />);
         expect(container).toBeDefined();
