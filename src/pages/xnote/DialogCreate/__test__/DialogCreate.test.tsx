@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import DialogCreate from "../DialogCreateView";
 
+const TITLE_DIALOG = "Create new note";
 const MOCK_TITLE_NOTE = "New note";
 const MOCK_MESSAGE_ERROR = "Tab name is required";
 
@@ -40,19 +41,17 @@ describe("Test component <DialogCreate />", () => {
     });    
 
     it("Should show dialog display none when open equal false", () => {
-        const { container } = render(<DialogCreateRender />);
-        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
-    
-        expect(dialog).toHaveStyle({ display: "none" });
+        const { queryByText } = render(<DialogCreateRender />);        
+        
+        expect(queryByText(TITLE_DIALOG)).not.toBeInTheDocument();
     });
     
     it("Should show dialog display block when open equal true", () => {
-        const { container, getByTestId } = render(<DialogCreateRender />);
-        const dialog = container.querySelector("[role=dialog]") as HTMLDivElement;
+        const { queryByText, getByTestId } = render(<DialogCreateRender />);        
         const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
         userEvent.click(buttonOpenDialog);
     
-        expect(dialog).toHaveStyle({ display: "flex" });
+        expect(queryByText(TITLE_DIALOG)).toBeInTheDocument();        
     });
     
     it(`Should show message error ${MOCK_MESSAGE_ERROR} when input title value empty`, async () => {
