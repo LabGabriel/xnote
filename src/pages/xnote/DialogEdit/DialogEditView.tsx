@@ -33,13 +33,14 @@ const DialogEditView: React.FC<IDialogEdit> = (props) => {
                             }
                             defaultValue={title}
                             placeholder="Tab name"
+                            data-testid="edit-title"
                         />
                         {isErrors && <span>Tab name is required</span>}
                     </form>
                 </DialogBody>
                 <DialogFooter>
                     <ButtonDelete onClick={deleteThisNote}>Delete</ButtonDelete>
-                    <ButtonPrimary form="editNote">Save</ButtonPrimary>
+                    <ButtonPrimary form="editNote" data-testid="edit-save">Save</ButtonPrimary>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

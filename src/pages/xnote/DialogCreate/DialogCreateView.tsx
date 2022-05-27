@@ -21,6 +21,7 @@ const DialogCreateView: React.FC<IDialogCreate> = ({ open, register, errors, han
                                 { required: true })
                             }
                             placeholder="Tab name"
+                            data-testid="create-title"
                         />
                         {isErrors && <span>Tab name is required</span>}
                     </form>
@@ -28,7 +29,7 @@ const DialogCreateView: React.FC<IDialogCreate> = ({ open, register, errors, han
 
                 <DialogFooter>
                     <ButtonSecundary onClick={onClose}>Close</ButtonSecundary>
-                    <ButtonPrimary form="createNote">Save</ButtonPrimary>
+                    <ButtonPrimary form="createNote" data-testid="save">Save</ButtonPrimary>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

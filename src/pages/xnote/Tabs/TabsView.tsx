@@ -18,7 +18,7 @@ const TabsView: React.FC<ITabs> = (props) => {
         <Tabs onSelect={onSelect} defaultIndex={lastSelectedTab}>
             <TabListStyled>
                 <div className="tab-area custom-scroll">
-                    <ButtonPlus onClick={openDialogCreate}>+</ButtonPlus>
+                    <ButtonPlus onClick={openDialogCreate} data-testid="button-open-dialog-create">+</ButtonPlus>
                     {
                         !!storage.length ?
                             (

@@ -11,6 +11,7 @@ const FooterView: React.FC<IFooter> = ({ onDeleteAllNote, amountNote, onDialogAb
                         <button 
                             onClick={onDeleteAllNote} 
                             disabled={amountNote > 1 ? false : true}
+                            data-testid="delete-all"
                         >
                             Detele all
                         </button>
