@@ -63,7 +63,7 @@ describe("Test component <DialogCreate />", () => {
         userEvent.click(buttonOpenDialog);
 
         await waitFor(() => {
-            const buttonSave = getByText(/save/i) as HTMLButtonElement;
+            const buttonSave = getByTestId("dialog-create-save") as HTMLButtonElement;
             userEvent.click(buttonSave);
         })
 
@@ -71,11 +71,11 @@ describe("Test component <DialogCreate />", () => {
     });
 
     it(`Should show input title value ${MOCK_TITLE_NOTE}`, () => {
-        const { container, getByTestId } = render(<DialogCreateRender />);
-        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
+        const { getByTestId } = render(<DialogCreateRender />);
+        const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;        
         userEvent.click(buttonOpenDialog);
 
-        const inputTitle = container.querySelector("[name=title]") as HTMLInputElement;
+        const inputTitle = getByTestId("create-title") as HTMLInputElement;
         userEvent.type(inputTitle, MOCK_TITLE_NOTE);
 
         expect(inputTitle).toHaveValue(MOCK_TITLE_NOTE);
@@ -83,15 +83,15 @@ describe("Test component <DialogCreate />", () => {
 
     it("Should show one called handleSubmit when submit", async () => {
         const handleSubmit = jest.fn();
-        const { getByTestId, container } = render(<DialogCreateRender submitMock={handleSubmit} />);
+        const { getByTestId } = render(<DialogCreateRender submitMock={handleSubmit} />);
 
         const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
         userEvent.click(buttonOpenDialog);
 
-        const inputTitle = container.querySelector("[name=title]") as HTMLInputElement;
+        const inputTitle = getByTestId("create-title") as HTMLInputElement;
         userEvent.type(inputTitle, MOCK_TITLE_NOTE);
 
-        fireEvent.submit(getByTestId("save"));        
+        fireEvent.submit(getByTestId("dialog-create-save"));        
         expect(handleSubmit).toHaveBeenCalledTimes(1);
     });  
 });

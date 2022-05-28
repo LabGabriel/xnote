@@ -31,7 +31,7 @@ const DialogCreateView: React.FC<IDialogCreate> = ({ open, register, errors, han
 
                         <DialogFooter>
                             <ButtonSecundary onClick={onClose}>Close</ButtonSecundary>
-                            <ButtonPrimary form="createNote" data-testid="save">Save</ButtonPrimary>
+                            <ButtonPrimary form="createNote" data-testid="dialog-create-save">Save</ButtonPrimary>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>

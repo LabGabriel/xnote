@@ -37,7 +37,7 @@ describe("Test component <Xnote />", () => {
         const inputTitle = getByTestId("create-title") as HTMLInputElement;
         userEvent.type(inputTitle, MOCK_TITLE_NOTE);
 
-        const buttonSave = getByTestId("save") as HTMLButtonElement;
+        const buttonSave = getByTestId("dialog-create-save") as HTMLButtonElement;
         await waitFor(() => userEvent.click(buttonSave));
 
         const textarea = container.querySelector("textarea") as HTMLTextAreaElement;
@@ -55,17 +55,24 @@ describe("Test component <Xnote />", () => {
         const tab = getByText(MOCK_TITLE_NOTE);
         userEvent.dblClick(tab);
 
-        const inputTitle = getByTestId("edit-title") as HTMLInputElement;        
+        const inputTitle = getByTestId("dialog-edit-title") as HTMLInputElement;        
         userEvent.type(inputTitle, " edited");
 
-        const buttonSave = getByTestId("edit-save") as HTMLButtonElement;
+        const buttonSave = getByTestId("dialog-edit-save") as HTMLButtonElement;
         await waitFor(() => userEvent.click(buttonSave));
 
         expect(getByText(`${MOCK_TITLE_NOTE} edited`)).toBeInTheDocument();
     });
 
-    it("Should show delete all disabled true button when there is only one tab", async () => {
+    it("Should show button delete all disabled true when there is only one tab", async () => {
         localStorage.setItem("xnote", JSON.stringify([createNote(MOCK_TITLE_NOTE)]));        
+        const { getByTestId } = render(<XnoteRender />);        
+        const buttonDeleteAll = getByTestId("delete-all");
+
+        expect(buttonDeleteAll).toBeDisabled();
+    });
+
+    it("Should show button delete all disabled true when don't have notes", async () => {
         const { getByTestId } = render(<XnoteRender />);        
         const buttonDeleteAll = getByTestId("delete-all");
 

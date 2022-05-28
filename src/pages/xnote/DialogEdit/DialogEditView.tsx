@@ -35,7 +35,7 @@ const DialogEditView: React.FC<IDialogEdit> = (props) => {
                                     }
                                     defaultValue={title}
                                     placeholder="Tab name"
-                                    data-testid="edit-title"
+                                    data-testid="dialog-edit-title"
                                 />
                                 {isErrors && <span>Tab name is required</span>}
                             </form>

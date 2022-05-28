@@ -62,7 +62,7 @@ describe("Test component <DialogEdit />", () => {
         const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
         userEvent.click(buttonOpenDialog);
 
-        const inputTitle = getByTestId("edit-title") as HTMLInputElement;        
+        const inputTitle = getByTestId("dialog-edit-title") as HTMLInputElement;        
         expect(inputTitle).toHaveValue(MOCK_TITLE_NOTE);
     });
 
@@ -85,7 +85,7 @@ describe("Test component <DialogEdit />", () => {
         const buttonOpenDialog = getByTestId("button-open-dialog") as HTMLButtonElement;
         userEvent.click(buttonOpenDialog);
 
-        const inputTitle = getByTestId("edit-title") as HTMLInputElement;
+        const inputTitle = getByTestId("dialog-edit-title") as HTMLInputElement;
         userEvent.type(inputTitle, MOCK_TITLE_NOTE);
 
         fireEvent.submit(getByTestId("dialog-edit-save"));
