@@ -21,7 +21,7 @@ const DialogEditView: React.FC<IDialogEdit> = (props) => {
                 <Dialog role="dialog">
                     <DialogContent>
                         <DialogHeader>
-                            <h3>Create edit title</h3>
+                            <h3>Edit title</h3>
                             <ButtonClose onClick={onClose}>
                                 <p>+</p>
                             </ButtonClose>
@@ -42,7 +42,7 @@ const DialogEditView: React.FC<IDialogEdit> = (props) => {
                         </DialogBody>
                         <DialogFooter>
                             <ButtonDelete onClick={deleteThisNote}>Delete</ButtonDelete>
-                            <ButtonPrimary form="editNote" data-testid="edit-save">Save</ButtonPrimary>
+                            <ButtonPrimary form="editNote" data-testid="dialog-edit-save">Save</ButtonPrimary>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>
