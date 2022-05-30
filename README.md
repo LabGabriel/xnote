@@ -32,12 +32,10 @@ Package manager yarn (not obligatory)
 
 ```
 $ npm or $ yarn
-
 ```
 
 Run project
 
 ```
 $ npm start or $ yarn start
-
 ```
