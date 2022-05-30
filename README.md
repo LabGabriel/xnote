@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Logo xnote" src="https://user-images.githubusercontent.com/53228013/122308597-10d19200-cee3-11eb-8432-9cc220c7c4a6.png" />
+    <img alt="Logo xnote" src="https://user-images.githubusercontent.com/53228013/171063375-6c4e8451-2098-42dc-b99c-f016706424b1.png" />
 </p>
 
 <h1 align="center">
@@ -16,19 +16,12 @@
 
 Add your everyday notes
 
-## 💻 Stack
-
-* [ReactJS](https://pt-br.reactjs.org/)
-* [TypeScript](typescriptlang.org)
-* [Styled components](https://styled-components.com/docs)
-* [React tabs](https://styled-components.com/docs)
-
 ## 📁 Clone
 
 With project clone, go file folder
 
 ```
-$ cd app
+$ cd xnote
 ```
 
 Install dependencies
@@ -38,15 +31,13 @@ Package manager yarn (not obligatory)
 [Download Yarn](https://yarnpkg.com/getting-started/install)
 
 ```
-$ npm 
-or
-$ yarn
+$ npm or $ yarn
+
 ```
 
 Run project
 
 ```
-$ npm start 
-or
-$yarn start
+$ npm start or $ yarn start
+
 ```
