@@ -3,6 +3,7 @@ import useLocalStorage from "common/hooks/useLocalStorage";
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import { IDialogTitle, INoteFields } from "../common/types/dialog";
 import createNote from "../common/util/createNote";
 import DialogCreateView from "./DialogCreateView";
@@ -26,6 +27,7 @@ const DialogCreate: React.FC = () => {
             setNoteContent(notes);
         })
         onClose();
+        toast("Create tab");
     };
     
     return (

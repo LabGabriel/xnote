@@ -3,6 +3,7 @@ import useLocalStorage from "common/hooks/useLocalStorage";
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { IDialogTitle, INoteFields } from "../common/types/dialog";
 import DialogEditView from "./DialogEditView";
 
@@ -44,6 +45,7 @@ const DialogEdit: React.FC = () => {
             setNoteContent(storage);
         })
         onClose();
+        toast("Delete note");
     };
 
     return (
