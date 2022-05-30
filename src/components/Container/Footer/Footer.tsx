@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import FooterView from "./FooterView";
 
 const Footer: React.FC = () => {
-    const { noteContent, setNoteContent } = useContext(XnoteContext);
+    const { noteContent, setNoteContent, setIsOpenDialogAbout } = useContext(XnoteContext);
     const [, setStorage] = useLocalStorage("xnote", "[]");
     const amountNote = noteContent.length;
     
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         })
     };
 
-    const onDialogAbout = () => "";
+    const onDialogAbout = () => setIsOpenDialogAbout(prevState => !prevState);
 
     return <FooterView {...{ onDeleteAllNote, amountNote, onDialogAbout }} />
 }

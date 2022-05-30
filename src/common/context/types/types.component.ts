@@ -10,6 +10,9 @@ export interface IXnoteContext {
     
     isOpenDialogEdit: boolean;
     setIsOpenDialogEdit: React.Dispatch<React.SetStateAction<boolean>>;
+    
+    isOpenDialogAbout: boolean;
+    setIsOpenDialogAbout: React.Dispatch<React.SetStateAction<boolean>>;
 
     noteEditDefaultValue: Omit<INoteFields, "content">;
     setNoteEditDefaultValue: React.Dispatch<React.SetStateAction<Omit<INoteFields, "content">>>;

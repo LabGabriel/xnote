@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { IDialogStyled, IDialogContentStyled } from "./types/types.styled";
+import { IDialogContentStyled } from "./types/types.styled";
 
-export const Dialog = styled.div<IDialogStyled>`
-  display: ${({ open }) => open ? "flex" : "none"};
+export const Dialog = styled.div`
+  display: flex;
   position: fixed;
   z-index: 1;
   left: 0;

@@ -11,6 +11,7 @@ export const XnoteProvider: React.FC = ({ children }) => {
     
     const [isOpenDialogCreate, setIsOpenDialogCreate] = useState<boolean>(false);
     const [isOpenDialogEdit, setIsOpenDialogEdit] = useState<boolean>(false);
+    const [isOpenDialogAbout, setIsOpenDialogAbout] = useState<boolean>(false);
     const [noteEditDefaultValue, setNoteEditDefaultValue] = useState<Omit<INoteFields, "content">>({
         id_note: "",
         title: ""
@@ -28,6 +29,9 @@ export const XnoteProvider: React.FC = ({ children }) => {
 
                     isOpenDialogEdit, 
                     setIsOpenDialogEdit,
+
+                    isOpenDialogAbout, 
+                    setIsOpenDialogAbout,
 
                     noteEditDefaultValue, 
                     setNoteEditDefaultValue
