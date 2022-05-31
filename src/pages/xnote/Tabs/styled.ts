@@ -14,7 +14,7 @@ export const TabStyled = styled(Tab)`
     font-size: 0.8rem;
     background-color: black !important;
     color: white !important;
-    padding: 0.5rem 1.5rem;
+    padding: 0.55rem 1.5rem;
     border-radius: 0.5rem !important;
     cursor: pointer;
     border: 0.1rem solid transparent !important;
