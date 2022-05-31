@@ -32,6 +32,7 @@ const DialogEdit: React.FC = () => {
             setNoteContent(storage);
         })
         onClose();
+        toast("Edited note");
     };
 
     const deleteThisNote = () => {

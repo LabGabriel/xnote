@@ -65,7 +65,7 @@ describe("Test component <Xnote />", () => {
         const buttonSave = getByTestId("dialog-edit-save") as HTMLButtonElement;
         await waitFor(() => userEvent.click(buttonSave));
 
-        const toastMessage = await findByText("Note edited");
+        const toastMessage = await findByText("Edited note");
 
         expect(toastMessage).toBeInTheDocument();
         expect(getByText(`${MOCK_TITLE_NOTE} edited`)).toBeInTheDocument();

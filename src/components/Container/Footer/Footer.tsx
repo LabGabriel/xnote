@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             setNoteContent([]);
             setStorage([]);
         });
-        toast("Delete all note");
+        toast("Delete all notes");
     };
 
     const onDialogAbout = () => setIsOpenDialogAbout(prevState => !prevState);
