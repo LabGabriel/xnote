@@ -55,8 +55,15 @@ jobs:
       needs: [ "build", "test" ]
       if: github.ref == 'refs/heads/main'    
       steps:
+        uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+            cache: "npm"
+
       - name: Deploy
-        run: npm run deploy
+        run: |
+          npm install 
+          npm run deploy
         env:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
