@@ -51,18 +51,26 @@ jobs:
         run: npm test
 
   deploy:
-      runs-on: ubuntu-18.04
-      needs: [ "build", "test" ]
-      if: github.ref == 'refs/heads/main'    
-      steps:
-      - name: Deploy
-        run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://${github_token}@github.com/${repository}
-          npm run deploy
-        env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          repository: ${{ github.repository }}
+    runs-on: ubuntu-18.04
+    needs: [ "build", "test"]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy app
+        run: exit 0
+
+  # deploy:
+  #     runs-on: ubuntu-18.04
+  #     needs: [ "build", "test" ]
+  #     if: github.ref == 'refs/heads/main'    
+  #     steps:
+  #     - name: Deploy
+  #       run: |
+  #         git config --global user.name $user_name
+  #         git config --global user.email $user_email
+  #         git remote set-url origin https://${github_token}@github.com/${repository}
+  #         npm run deploy
+  #       env:
+  #         user_name: 'github-actions[bot]'
+  #         user_email: 'github-actions[bot]@users.noreply.github.com'
+  #         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+  #         repository: ${{ github.repository }}
