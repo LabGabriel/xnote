@@ -7,8 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-test:
-
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,21 +20,29 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: "npm"
 
     - name: "Install dependencies"
       run: npm install 
 
     - name: "Run build"
-      run: npm run build 
+      run: npm run build  
 
-    - name: "Run tests"
-      run: npm test
+  test:     
+    runs-on: ubuntu-latest
+    needs: "build"
+    
+    steps:
+      - name: "Install dependencies"
+        run: npm install 
+      
+      - name: "Run tests"
+        run: npm test
 
   deploy:
       runs-on: ubuntu-latest
-      needs: build-test
-      if: github.ref == 'refs/heads/master'    
+      needs: ["build, test"]
+      if: github.ref == "refs/heads/main"    
       steps:
       - name: "Deploy"
         run: |
@@ -44,7 +51,7 @@ jobs:
           git remote set-url origin https://${github_token}@github.com/${repository}
           npm run deploy
         env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
