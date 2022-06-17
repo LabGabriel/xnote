@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: "Install and Build"
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: "Deploy"
